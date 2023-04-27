@@ -10,7 +10,8 @@ Classifieds can be posted that involve selling, buying, exchanging and we adding
    - Intermediate React Developer
    - Basic Understanding of Firebase
 
-
+![Alt Text]( ExchangeZone/assets/images/home.png)
+ 
 
 
 
