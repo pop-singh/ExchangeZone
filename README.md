@@ -13,8 +13,7 @@ Classifieds can be posted that involve selling, buying, exchanging and we adding
 - ExchageZone 
 
 <div align="center">
-  <img alt="Demo" src=".assets/images/home.png
-" />
+  <img alt="Demo" src="assets/images/home.png" />
 </div>
 
 
