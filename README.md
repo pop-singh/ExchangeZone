@@ -19,7 +19,7 @@ Classifieds can be posted that involve selling, buying, exchanging and we adding
 <br>
 -Login Page
 <div align="center">
-  <img alt="Demo" src="assets/images/login1.png/>
+  <img alt="Demo" src="assets/images/login.png/>
 </div>
 
 
