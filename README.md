@@ -19,10 +19,12 @@ Classifieds can be posted that involve selling, buying, exchanging and we adding
 <br>
 <br>
 -Login Page
+<br>
 <div align="center">
-  <img alt="Demo" src="assets/images/login.png/>
+  <img alt="Demo" src="assets/images/login.png "/>
 </div>
-
+<br>
+<br>
 
 ## 🦸 Tech Stack
 
