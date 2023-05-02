@@ -11,11 +11,16 @@ Classifieds can be posted that involve selling, buying, exchanging and we adding
    - Basic Understanding of Firebase
 
 - ExchageZone 
-
+-Home Page <br>
 <div align="center">
   <img alt="Demo" src="assets/images/home.png" />
 </div>
-
+<br>
+<br>
+-Login Page
+<div align="center">
+  <img alt="Demo" src="assets/images/login 1.png/>
+</div>
 
 
 ## 🦸 Tech Stack
