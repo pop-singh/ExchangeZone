@@ -12,13 +12,13 @@ Classifieds can be posted that involve selling, buying, exchanging and we adding
 
 - ExchageZone 
 <br>
- - Home Page <br>
+ # Home Page <br>
 <div align="center">
   <img alt="Demo" src="assets/images/home.png" />
 </div>
 <br>
 <br>
--Login Page
+# Login Page
 <br>
 <div align="center">
   <img alt="Demo" src="assets/images/login.png "/>
