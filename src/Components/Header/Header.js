@@ -91,9 +91,12 @@ function Header() {
           <span> ENGLISH </span>
           <Arrow></Arrow>
         </div>
-        <div className="loginPage">
+        <div className="loginPage" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           {user ? (
-            user.displayName
+            <>
+              <Link to="/favorites"><span>Favorites</span></Link>
+              <span>{user.displayName}</span>
+            </>
           ) : (
             <Link to="/login">
               <span>Login</span>

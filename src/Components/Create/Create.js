@@ -2,6 +2,7 @@ import React, { Fragment, useState, useContext } from "react";
 import "./Create.css";
 import Header from "../Header/Header";
 import { Firebase } from "../../firebase/config";
+import firebase from 'firebase/compat/app'
 import { AuthContext } from "../../contextStore/AuthContext";
 import { useHistory } from "react-router";
 import GoLoading from "../Loading/GoLoading";
@@ -16,9 +17,8 @@ const Create = () => {
   let [loading,setLoading]=useState(false);
   const handleSubmit = () => {
     setLoading(true);
-    let date = new Date().toDateString();
     Firebase.storage()
-      .ref(`/image/${image.name}`)
+      .ref(`/image/${image?.name}`)
       .put(image)
       .then(({ ref }) => {
         ref.getDownloadURL().then((url) => {
@@ -27,11 +27,12 @@ const Create = () => {
             .add({
               name,
               category,
-              price,
+              price: Number(price),
               description,
               url,
               userId: user.uid,
-              createdAt: date,
+              sold: false,
+              createdAt: firebase.firestore.FieldValue.serverTimestamp(),
             })
             .then(() => {
               history.push("/");
