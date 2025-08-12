@@ -4,7 +4,6 @@ import { AllPostContext } from "../../contextStore/AllPostContext";
 import { PostContext } from "../../contextStore/PostContext";
 import "./Header.css";
 import OlxLogo from "../../assets/OlxLogo";
-import EZLogo from "../../assets/ExchangeZoneLogo";
 import SearchIcon from "../../assets/SearchIcon"
 import Arrow from "../../assets/Arrow";
 import SellButton from "../../assets/SellButton";
