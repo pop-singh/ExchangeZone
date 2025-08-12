@@ -47,6 +47,8 @@ function Header() {
   const { user } = useContext(AuthContext);
   
   const logoutHandler = () => {
+    const confirmLogout = window.confirm('Logout of ExchangeZone?')
+    if (!confirmLogout) return
     Firebase.auth()
       .signOut()
       .then(() => {
@@ -93,7 +95,10 @@ function Header() {
         </div>
         <div className="loginPage">
           {user ? (
-            user.displayName
+            <>
+              <Link to="/my-posts"><span>My Posts</span></Link>
+              <span className="user-name">{user.displayName}</span>
+            </>
           ) : (
             <Link to="/login">
               <span>Login</span>

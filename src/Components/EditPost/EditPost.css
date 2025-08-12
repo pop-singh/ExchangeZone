@@ -1,0 +1,30 @@
+.centerDiv {
+  border: 1px solid #d4d4d4;
+  width: max-content;
+  margin: 40px auto;
+  padding: 16px 24px;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.input {
+  width: 32rem;
+  padding: 10px;
+  margin: 6px 0 14px;
+  border: 1px solid #d4d4d4;
+  border-radius: 6px;
+}
+
+.uploadBtn {
+  padding: 10px 14px;
+  background: #10b981;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.uploadBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
