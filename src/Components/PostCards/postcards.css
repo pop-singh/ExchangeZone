@@ -6,6 +6,7 @@
     height: 270px;
     display: inline-block;
     cursor: pointer;
+    position: relative;
   }
   
   .card .favorite {
@@ -43,4 +44,31 @@
     justify-content: flex-end;
     font-size: small;
   }
+
+.owner-actions {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  display: flex;
+  gap: 6px;
+  z-index: 2;
+}
+
+.owner-btn {
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.owner-btn.edit {
+  background: #2563eb;
+  color: #fff;
+}
+
+.owner-btn.delete {
+  background: #ef4444;
+  color: #fff;
+}
   

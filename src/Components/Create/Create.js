@@ -15,6 +15,10 @@ const Create = () => {
   let [image, setImage] = useState();
   let [loading,setLoading]=useState(false);
   const handleSubmit = () => {
+    if (!name || !category || !price || !image) {
+      alert('Please fill all fields and select an image')
+      return
+    }
     setLoading(true);
     let date = new Date().toDateString();
     Firebase.storage()
@@ -37,7 +41,7 @@ const Create = () => {
               history.push("/");
             });
         });
-      });
+      }).finally(() => setLoading(false));
   };
   return (
     <Fragment>
@@ -113,8 +117,8 @@ const Create = () => {
           }}
         />
         <br />
-        <button className="uploadBtn" onClick={handleSubmit}>
-          upload and Submit
+        <button className="uploadBtn" onClick={handleSubmit} disabled={loading}>
+          {loading ? 'Uploading...' : 'upload and Submit'}
         </button>
       </div> 
     </Fragment>

@@ -17,11 +17,10 @@ function Posts() {
   useEffect(() => {
     setLoading(true);
     setLoading2(true)
-    Firebase.firestore() //retreving all posts from firebase in descending order
+    const unsubDesc = Firebase.firestore() //retreving all posts from firebase in descending order
       .collection("products")
       .orderBy("createdAt", "desc")
-      .get()
-      .then((snapshot) => {
+      .onSnapshot((snapshot) => {
         let allPostsDescendingOder = snapshot.docs.map((product) => {
           return {
             ...product.data(),
@@ -32,11 +31,10 @@ function Posts() {
         setAllPost(allPostsDescendingOder);
         setLoading(false);
       });
-    Firebase.firestore() //retreving all posts from firebase in asecnding order of date
+    const unsubAsc = Firebase.firestore() //retreving all posts from firebase in asecnding order of date
       .collection("products")
       .orderBy("createdAt", "asc")
-      .get()
-      .then((snapshot) => {
+      .onSnapshot((snapshot) => {
         let allPostsAscendingOder = snapshot.docs.map((product) => {
           return {
             ...product.data(),
@@ -47,6 +45,10 @@ function Posts() {
         setLoading2(false)
         
       });
+    return () => {
+      unsubDesc();
+      unsubAsc();
+    }
   }, [setAllPost]);
   // quickMenuCards assign all cards of post item later it will be displayed
   let quickMenuCards = posts.map((product, index) => {
