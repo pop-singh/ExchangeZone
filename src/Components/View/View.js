@@ -2,12 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import { PostContext } from "../../contextStore/PostContext";
 import { Firebase } from "../../firebase/config";
 import { useHistory } from "react-router";
+import { AuthContext } from "../../contextStore/AuthContext";
 import "./View.css";
 function View() {
-  let { postContent } = useContext(PostContext);//from the global store PostContext we can get information about desired product post that we want to show (the user is clicked item on the card)
+  let { postContent } = useContext(PostContext);
+  const { user } = useContext(AuthContext)
 
-  const [userDetails, setUserDetails] = useState();//we want show the details of who is posted the add and we dont know,so we want retreive user data from firebase who is posted this add
-  const history = useHistory();//if user click the refresh of the page then PostContext data will be erased so it will throws an error so that time we want redirect this page to home page
+  const [userDetails, setUserDetails] = useState();
+  const history = useHistory();
   useEffect(() => {
     let { userId } = postContent;
     if (userId === undefined) {
@@ -24,6 +26,22 @@ function View() {
         });
     }
   }, [history, postContent]);
+
+  const canManage = user && user.uid === postContent.userId
+
+  const handleDelete = async () => {
+    if (!canManage) return
+    if (!window.confirm('Delete this listing?')) return
+    await Firebase.firestore().collection('products').doc(postContent.id).delete()
+    history.push('/')
+  }
+
+  const handleMarkSold = async () => {
+    if (!canManage) return
+    await Firebase.firestore().collection('products').doc(postContent.id).update({ sold: true })
+    alert('Marked as sold')
+  }
+
   return (
     <div className="viewParentDiv">
       <div className="imageShowDiv">
@@ -34,7 +52,8 @@ function View() {
           <p>&#x20B9; {postContent.price} </p>
           <span>{postContent.name}</span>
           <p>{postContent.category}</p>
-          <span>{postContent.createdAt}</span>
+          <span>{postContent.createdAt?.seconds ? new Date(postContent.createdAt.seconds * 1000).toDateString() : postContent.createdAt}</span>
+          {postContent.sold && <p style={{ color: '#e0245e', fontWeight: 600 }}>SOLD</p>}
         </div>
         <div className="productDescription">
             <p className="p-bold">Product Description</p>
@@ -48,7 +67,12 @@ function View() {
             <p>Phone : {userDetails.phone}</p>
           </div>
         }
-       
+        {canManage && (
+          <div style={{ display: 'flex', gap: 8, marginTop: 12 }}>
+            <button onClick={handleMarkSold}>Mark as sold</button>
+            <button onClick={handleDelete} style={{ background: '#e0245e', color: '#fff' }}>Delete</button>
+          </div>
+        )}
       </div>
     </div>
   );

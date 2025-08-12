@@ -4,7 +4,6 @@ import { AllPostContext } from "../../contextStore/AllPostContext";
 import { PostContext } from "../../contextStore/PostContext";
 import "./Header.css";
 import OlxLogo from "../../assets/OlxLogo";
-import EZLogo from "../../assets/ExchangeZoneLogo";
 import SearchIcon from "../../assets/SearchIcon"
 import Arrow from "../../assets/Arrow";
 import SellButton from "../../assets/SellButton";
@@ -91,9 +90,12 @@ function Header() {
           <span> ENGLISH </span>
           <Arrow></Arrow>
         </div>
-        <div className="loginPage">
+        <div className="loginPage" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           {user ? (
-            user.displayName
+            <>
+              <Link to="/favorites"><span>Favorites</span></Link>
+              <span>{user.displayName}</span>
+            </>
           ) : (
             <Link to="/login">
               <span>Login</span>

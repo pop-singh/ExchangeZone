@@ -6,6 +6,7 @@ import Login from '../Pages/Login'
 import CreatePost from '../Pages/CreatePost'
 import ViewPost from '../Pages/ViewPost'
 import ViewMore from '../Pages/ViewMore'
+import FavoritesPage from '../Pages/Favorites'
 
 
 
@@ -28,14 +29,13 @@ function MainRoutes() {
            <Route path="/view">
                <ViewPost/>
            </Route>
-           <Route path="/viewmore">
-               <ViewMore/>
-           </Route>
-         
-           
-
-           
-       </Router>
+                       <Route path="/viewmore">
+                <ViewMore/>
+            </Route>
+            <Route path="/favorites">
+                <FavoritesPage/>
+            </Route>
+        </Router>
     )
 }
 

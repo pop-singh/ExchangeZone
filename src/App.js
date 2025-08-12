@@ -3,6 +3,7 @@ import "./App.css";
 import ContextAllPost from "./contextStore/AllPostContext";
 import ContextAuth from "./contextStore/AuthContext";
 import ContextPost from "./contextStore/PostContext";
+import FavoritesProvider from "./contextStore/FavoritesContext";
 import MainRoutes from "./Routes/MainRoutes";
 
 
@@ -14,7 +15,9 @@ function App() {
       <ContextAuth>
         <ContextAllPost>
           <ContextPost>
-            <MainRoutes />
+            <FavoritesProvider>
+              <MainRoutes />
+            </FavoritesProvider>
           </ContextPost>
         </ContextAllPost>
       </ContextAuth>
