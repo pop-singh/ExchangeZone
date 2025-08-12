@@ -8,6 +8,7 @@ cache:
 stages:
   - install
   - build
+  - deploy
 
 install:
   stage: install
@@ -28,3 +29,17 @@ build:
     paths:
       - build/
     expire_in: 1 week
+
+pages:
+  stage: deploy
+  dependencies:
+    - build
+  script:
+    - rm -rf public
+    - mkdir -p public
+    - cp -r build/* public/
+  artifacts:
+    paths:
+      - public
+  only:
+    - main
