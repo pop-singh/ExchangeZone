@@ -1,21 +1,25 @@
-import React,{useContext} from 'react'
+import React,{useContext, useState} from 'react'
 import Heart from '../../assets/Heart'
 import {useHistory} from "react-router-dom";
 import {PostContext} from "../../contextStore/PostContext";
 import "./postcards.css"
 
 function PostCards({product,index}) {
-    let {setPostContent} = useContext(PostContext)//at the time of onClick on post ,the specified post item assigned to postContent by setPostContent function and it will be stored in a global context PostContext
- 
-    const history=useHistory()//at the time of onClick on post , we want redirect to the view post page
+    const {setPostContent} = useContext(PostContext)
+    const [fav, setFav] = useState(false)
+    const history=useHistory()
+
+    const goToView = () => {
+      setPostContent(product)
+      history.push("/view")
+    }
 
     return (
-      <div className="card" key={index} onClick={()=>{
-        setPostContent(product)
-        history.push("/view")
-      }}>
-        <div className="favorite">
-          <Heart></Heart>
+      <div className="card" key={index} onClick={goToView}>
+        <div className="favorite" onClick={(e)=>{ e.stopPropagation(); setFav(v=>!v); }}>
+          <div className={fav ? 'active' : ''}>
+            <Heart></Heart>
+          </div>
         </div>
         <div className="image">
           <img src={product.url} alt="" />
